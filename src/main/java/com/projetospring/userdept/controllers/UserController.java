@@ -5,7 +5,11 @@ import com.projetospring.userdept.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -16,7 +20,7 @@ public class UserController {
 
     @GetMapping
     public List<User> listaTodos(){
-       return repository.findAll();
+        return repository.findAll();
     }
 
     @GetMapping(value = "/{id}")
@@ -28,4 +32,14 @@ public class UserController {
     public User adicionaUser(@RequestBody User user){
         return repository.save(user);
     }
+
+
+    @GetMapping(value = "/legal")
+    public String legal() {
+        return "<h1>Sou Legal</h1>";
+    }
+
+
+
+
 }
